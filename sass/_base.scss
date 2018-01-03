@@ -14,9 +14,20 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// responsive breakpoints
+$bp-largest: 75em; // 1200 px / 16
+$bp-large: 62.5em; // 1000 px / 16
+$bp-medium: 50em; // 800 px / 16
+$bp-small: 37.5em; // 600 px / 16
+
+
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%; // 1rem = 8px;
+  }
 }
 
 *,
@@ -48,4 +59,12 @@ body {
 
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr)[full-end]; // add track names and small fixes
 
+  @media screen and (max-width: $bp-large) {
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr)[full-end];
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    grid-template-rows: 6rem calc(100vh - 6rem) repeat(6, min-content);
+  }
 }
